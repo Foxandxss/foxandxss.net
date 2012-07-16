@@ -1,7 +1,14 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'faker'
+
+Option.create!(name: "page_name", value: "Foxandxss'")
+
+projects = PageType.create!(name: "Projects")
+books = PageType.create!(name: "Books")
+
+Page.create!(title: "Project 1", ptype: projects, content: Faker::Lorem.paragraphs(5))
+Page.create!(title: "Project 2", ptype: projects, content: Faker::Lorem.paragraphs(5))
+Page.create!(title: "Project 3", ptype: projects, content: Faker::Lorem.paragraphs(5))
+Page.create!(title: "Project 4", ptype: projects, content: Faker::Lorem.paragraphs(5))
+
+Page.create!(title: "My book 1", ptype: books, content: Faker::Lorem.paragraphs(5))
+Page.create!(title: "My book 2", ptype: books, content: Faker::Lorem.paragraphs(5))
