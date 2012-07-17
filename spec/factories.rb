@@ -8,7 +8,7 @@ FactoryGirl.define do
   factory :page do
     sequence(:title) { |n| "Page #{n}" }
     association :ptype, factory: :page_type
-    image "spec/fixtures/project.png"
+    image "/spec/fixtures/project.png"
     content { Faker::Lorem.paragraphs(5).join('\n') }
   end
 

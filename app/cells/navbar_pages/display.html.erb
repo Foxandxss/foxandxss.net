@@ -9,7 +9,7 @@
           </a>
           <ul class="dropdown-menu">
             <% pt.pages.each do |page| %>
-                <li><a href="#"><%= page.title %></a></li>
+                <li><%= link_to page.title, page %></li>
             <% end %>
           </ul>
         </li>
