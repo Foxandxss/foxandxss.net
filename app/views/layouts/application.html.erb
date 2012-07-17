@@ -12,6 +12,14 @@
     <![endif]-->
 
     <%= stylesheet_link_tag "application", :media => "all" %>
+
+    <style>
+        <% BlogStatus.all.each do |status| %>
+        .dropdown-menu a.blog-<%= status.name %> {
+            color: <%= status.color %>
+        }
+        <% end %>
+    </style>
   </head>
   <body>
 
@@ -27,6 +35,8 @@
           <div class="container nav-collapse">
             <ul class="nav">
               <%= render_cell :navbar_pages, :display %>
+              <%= render_cell :navbar_blogs, :display %>
+              <li><a href="#">About Me</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>

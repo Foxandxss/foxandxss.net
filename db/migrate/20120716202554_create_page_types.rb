@@ -6,6 +6,6 @@ class CreatePageTypes < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :page_types, :name
+    add_index :page_types, :name, unique: true
   end
 end
