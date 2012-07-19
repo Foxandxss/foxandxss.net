@@ -1,2 +1,7 @@
 <p><%= page.content %></p>
-<%= image_tag(page.image) %>
+<% unless page.image.blank? %>
+    <%= image_tag(page.image) %>
+<% end %>
+
+<%= render page.informations %>
+<%= render page.links %>

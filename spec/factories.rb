@@ -16,6 +16,18 @@ FactoryGirl.define do
     sequence(:name) { |n| "Type #{n}" }
   end
 
+  factory :page_information do
+    sequence(:title) { |n| "Information #{n}" }
+    content { Faker::Lorem.sentence }
+    page
+  end
+
+  factory :page_link do
+    sequence(:title) { |n| "Link #{n}" }
+    url "http://www.google.com"
+    page
+  end
+
   factory :blog do
     sequence(:name) { |n| "Blog #{n}" }
     url "http://www.google.com"

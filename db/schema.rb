@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120717112154) do
+ActiveRecord::Schema.define(:version => 20120719103147) do
 
   create_table "blog_statuses", :force => true do |t|
     t.string   "name",       :null => false
@@ -38,6 +38,26 @@ ActiveRecord::Schema.define(:version => 20120717112154) do
   end
 
   add_index "options", ["name"], :name => "index_options_on_name", :unique => true
+
+  create_table "page_informations", :force => true do |t|
+    t.string   "title"
+    t.string   "content"
+    t.integer  "page_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "page_informations", ["title", "page_id"], :name => "index_page_informations_on_title_and_page_id", :unique => true
+
+  create_table "page_links", :force => true do |t|
+    t.string   "title"
+    t.string   "url"
+    t.integer  "page_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "page_links", ["title", "page_id"], :name => "index_page_links_on_title_and_page_id", :unique => true
 
   create_table "page_types", :force => true do |t|
     t.string   "name"

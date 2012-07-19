@@ -31,14 +31,14 @@ describe "Static pages" do
 
     context "Link to pages" do
 
-      it "should contain links to projects" do
+      it "should contain page_links to projects" do
         should have_selector "a", text: "Projects"
         projects.each do |project|
           should have_selector "li", text: project.title
         end
       end
 
-      it "should contain links to books" do
+      it "should contain page_links to books" do
         should have_selector "a", text: "Books"
         books.each do |book|
           should have_selector "li", text: book.title
@@ -46,7 +46,7 @@ describe "Static pages" do
       end
     end
 
-    context "Blog links" do
+    context "Blog page_links" do
 
       it "should contain active blogs" do
         active_blogs.each do |blog|
