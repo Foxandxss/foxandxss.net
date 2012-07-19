@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120719103147) do
+ActiveRecord::Schema.define(:version => 20120719191740) do
 
   create_table "blog_statuses", :force => true do |t|
     t.string   "name",       :null => false
@@ -29,6 +29,15 @@ ActiveRecord::Schema.define(:version => 20120719103147) do
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
   end
+
+  create_table "news", :force => true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "news", ["title"], :name => "index_news_on_title"
 
   create_table "options", :force => true do |t|
     t.string   "name",       :null => false

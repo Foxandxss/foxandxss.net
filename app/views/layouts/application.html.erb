@@ -34,9 +34,8 @@
           <%= link_to @page_name.value, root_path, class: "brand" %>
           <div class="container nav-collapse">
             <ul class="nav">
-              <%= render_cell :navbar_pages, :display %>
               <%= render_cell :navbar_blogs, :display %>
-              <li><a href="#">About Me</a></li>
+              <%= render_cell :navbar_pages, :display %>
             </ul>
           </div><!--/.nav-collapse -->
         </div>

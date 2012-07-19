@@ -5,6 +5,11 @@ FactoryGirl.define do
     value "value"
   end
 
+  factory :news do
+    sequence(:title) { |n| "News #{n}" }
+    content { Faker::Lorem.paragraphs(3).join('\n') }
+  end
+
   factory :page do
     sequence(:title) { |n| "Page #{n}" }
     association :ptype, factory: :page_type

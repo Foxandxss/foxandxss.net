@@ -2,16 +2,18 @@ require 'spec_helper'
 
 describe "Static pages" do
 
+  let!(:page_title) { FactoryGirl.create(:option, name: "page_name", value: "Page Title") }
+
   subject { page }
 
   describe "navbar" do
 
-    let!(:page_title) { FactoryGirl.create(:option, name: "page_name", value: "Page Title") }
-
     let(:pt_projects) { FactoryGirl.create(:page_type, name: "Projects") }
     let(:pt_books) { FactoryGirl.create(:page_type, name: "Books") }
+    let(:pt_about) { FactoryGirl.create(:page_type, name: "About") }
     let!(:projects) { FactoryGirl.create_list(:page, 3, ptype: pt_projects) }
     let!(:books) { FactoryGirl.create_list(:page, 3, ptype: pt_books) }
+    let!(:about) { FactoryGirl.create(:page, title: "About Me", ptype: pt_about) }
 
     let(:status_active) { FactoryGirl.create(:blog_status, name: "active", color: "green") }
     let(:status_deprecated) { FactoryGirl.create(:blog_status, name: "deprecated", color: "red") }
@@ -46,7 +48,7 @@ describe "Static pages" do
       end
     end
 
-    context "Blog page_links" do
+    context "Link to blogs" do
 
       it "should contain active blogs" do
         active_blogs.each do |blog|
@@ -60,7 +62,26 @@ describe "Static pages" do
     end
 
     it "Should show the About page" do
-      should have_content "About Me"
+      should have_content about.title
+    end
+  end
+
+  describe "Home page" do
+
+    context "Latest news" do
+
+      let!(:news) { FactoryGirl.create_list(:news, 4) }
+
+      before do
+        visit root_path
+      end
+
+      it "contains the list of news" do
+        news.each do |a_new|
+          should have_content a_new.title
+          should have_content a_new.content
+        end
+      end
     end
   end
 end

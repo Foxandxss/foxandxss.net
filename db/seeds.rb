@@ -7,11 +7,13 @@ Blog.delete_all
 BlogStatus.delete_all
 PageInformation.delete_all
 PageLink.delete_all
+News.delete_all
 
 Option.create!(name: "page_name", value: "Foxandxss'")
 
 projects = PageType.create!(name: "Projects")
 books = PageType.create!(name: "Books")
+about = PageType.create!(name: "About")
 
 page = Page.create!(title: "Project 1", ptype: projects, content: Faker::Lorem.paragraphs(5), image: "http://placekitten.com/g/400/400")
 Page.create!(title: "Project 2", ptype: projects, content: Faker::Lorem.paragraphs(5), image: "http://placekitten.com/g/400/400")
@@ -20,6 +22,8 @@ Page.create!(title: "Project 4", ptype: projects, content: Faker::Lorem.paragrap
 
 book = Page.create!(title: "My book 1", ptype: books, content: Faker::Lorem.paragraphs(5))
 Page.create!(title: "My book 2", ptype: books, content: Faker::Lorem.paragraphs(5))
+
+Page.create!(title: "About Me", ptype: about, content: Faker::Lorem.paragraphs(5))
 
 active = BlogStatus.create!(name: "active", color: "green")
 deprecated = BlogStatus.create!(name: "deprecated", color: "red")
@@ -42,3 +46,14 @@ PageInformation.create!(title: "Publisher", content: "Self published.", page: bo
 
 PageLink.create!(title: "Buy", url: "http://www.google.com", page: book)
 PageLink.create!(title: "PDF", url: "http://www.google.com", page: book)
+
+n1 = News.create!(title: "Welcome to my page", content: Faker::Lorem.paragraphs(3))
+n2 = News.create!(title: "Woorking", content: Faker::Lorem.paragraphs(3))
+n3 = News.create!(title: "Last update!", content: Faker::Lorem.paragraphs(3))
+
+n1.created_at = 3.days.ago
+n1.save!
+n2.created_at = 1.day.ago
+n2.save!
+n3.created_at = 1.second.ago
+n3.save!
