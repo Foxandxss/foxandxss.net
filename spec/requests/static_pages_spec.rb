@@ -70,7 +70,8 @@ describe "Static pages" do
 
     context "Latest news" do
 
-      let!(:news) { FactoryGirl.create_list(:news, 4) }
+      let!(:news) { FactoryGirl.create_list(:news, 5) }
+      let!(:old_news) { FactoryGirl.create_list(:news, 3, created_at: 3.days.ago) }
 
       before do
         visit root_path
@@ -80,6 +81,32 @@ describe "Static pages" do
         news.each do |a_new|
           should have_content a_new.title
           should have_content a_new.content
+        end
+      end
+
+      it "should not contain old news" do
+        old_news.each do |a_new|
+          should_not have_content a_new.title
+          should_not have_content a_new.content
+        end
+      end
+
+      context "Pagination" do
+
+        before do
+          click_link "Next"
+        end
+
+        it "contains only the old news" do
+          old_news.each do |a_new|
+            should have_content a_new.title
+            should have_content a_new.content
+          end
+
+          news.each do |a_new|
+            should_not have_content a_new.title
+            should_not have_content a_new.content
+          end
         end
       end
     end

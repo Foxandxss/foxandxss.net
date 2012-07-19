@@ -1,8 +1,8 @@
 class CreatePageLinks < ActiveRecord::Migration
   def change
     create_table :page_links do |t|
-      t.string :title
-      t.string :url
+      t.string :title, null: false
+      t.string :url, null: false
       t.integer :page_id
 
       t.timestamps

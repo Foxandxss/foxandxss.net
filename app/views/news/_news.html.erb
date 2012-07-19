@@ -1,4 +1,4 @@
 <li>
-  <p><%= news.title %><span> <%= time_ago_in_words(news.created_at) %> ago</span></p>
+  <p><%= news.title %><span> <%= timeago_tag news.created_at, nojs: true, limit: 15.days.ago %></span></p>
   <p><%= news.content %></p>
 </li>

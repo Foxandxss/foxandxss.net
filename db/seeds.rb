@@ -47,6 +47,9 @@ PageInformation.create!(title: "Publisher", content: "Self published.", page: bo
 PageLink.create!(title: "Buy", url: "http://www.google.com", page: book)
 PageLink.create!(title: "PDF", url: "http://www.google.com", page: book)
 
+News.create!(title: "Newer news", content: Faker::Lorem.paragraphs(3))
+News.create!(title: "Newer news", content: Faker::Lorem.paragraphs(3))
+News.create!(title: "Newer news", content: Faker::Lorem.paragraphs(3))
 n1 = News.create!(title: "Welcome to my page", content: Faker::Lorem.paragraphs(3))
 n2 = News.create!(title: "Woorking", content: Faker::Lorem.paragraphs(3))
 n3 = News.create!(title: "Last update!", content: Faker::Lorem.paragraphs(3))

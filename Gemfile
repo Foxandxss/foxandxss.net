@@ -25,3 +25,5 @@ end
 
 gem 'jquery-rails'
 gem 'cells'
+gem 'rails-timeago'
+gem 'kaminari'
