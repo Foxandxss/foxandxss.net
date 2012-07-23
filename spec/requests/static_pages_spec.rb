@@ -66,6 +66,22 @@ describe "Static pages" do
     end
   end
 
+  describe "Sidebar" do
+
+    let!(:so_widget) { FactoryGirl.create(:widget, title: "Stackoverflow profile", content: '<a href="http://stackoverflow.com/users/123204/jesus-rodriguez">
+<img src="http://stackoverflow.com/users/flair/123204.png" width="208" height="58" alt="profile for Jesus Rodriguez at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for Jesus Rodriguez at Stack Overflow, Q&amp;A for professional and enthusiast programmers">
+</a>
+') }
+
+    before do
+      visit root_path
+    end
+
+    it "should contain the widgets" do
+      should have_content so_widget.title
+    end
+  end
+
   describe "Home page" do
 
     context "Latest news" do

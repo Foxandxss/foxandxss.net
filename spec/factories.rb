@@ -43,4 +43,9 @@ FactoryGirl.define do
     name { Faker::Lorem.words(1).join('')}
     color "#000"
   end
+
+  factory :widget do
+    title { Faker::Lorem.sentence }
+    content { Faker::Lorem.paragraph }
+  end
 end

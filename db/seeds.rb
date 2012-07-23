@@ -8,6 +8,7 @@ BlogStatus.delete_all
 PageInformation.delete_all
 PageLink.delete_all
 News.delete_all
+Widget.delete_all
 
 Option.create!(name: "page_name", value: "Foxandxss'")
 
@@ -60,3 +61,10 @@ n2.created_at = 1.day.ago
 n2.save!
 n3.created_at = 1.second.ago
 n3.save!
+
+Widget.create!(title: "Follow me!", content: '<a href="https://twitter.com/Foxandxss" class="twitter-follow-button" data-show-count="false" data-lang="es" data-size="large">Seguir a @Foxandxss</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>')
+Widget.create!(title: "Stackoverflow profile", content: '<a href="http://stackoverflow.com/users/123204/jesus-rodriguez">
+<img src="http://stackoverflow.com/users/flair/123204.png" width="208" height="58" alt="profile for Jesus Rodriguez at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for Jesus Rodriguez at Stack Overflow, Q&amp;A for professional and enthusiast programmers">
+</a>
+')

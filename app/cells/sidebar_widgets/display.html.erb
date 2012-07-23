@@ -1,0 +1,6 @@
+<% @widgets.each do |widget| %>
+    <li>
+      <%= widget.title %>
+      <%= widget.content.html_safe %>
+    </li>
+<% end %>
