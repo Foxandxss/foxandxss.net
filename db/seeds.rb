@@ -9,6 +9,7 @@ PageInformation.delete_all
 PageLink.delete_all
 News.delete_all
 Widget.delete_all
+PageImage.delete_all
 
 Option.create!(name: "page_name", value: "Foxandxss'")
 
@@ -16,10 +17,10 @@ projects = PageType.create!(name: "Projects")
 books = PageType.create!(name: "Books")
 about = PageType.create!(name: "About")
 
-page = Page.create!(title: "Project 1", ptype: projects, content: Faker::Lorem.paragraphs(5), image: "http://placekitten.com/g/400/400")
-Page.create!(title: "Project 2", ptype: projects, content: Faker::Lorem.paragraphs(5), image: "http://placekitten.com/g/400/400")
-Page.create!(title: "Project 3", ptype: projects, content: Faker::Lorem.paragraphs(5), image: "http://placekitten.com/g/400/400")
-Page.create!(title: "Project 4", ptype: projects, content: Faker::Lorem.paragraphs(5), image: "http://placekitten.com/g/400/400")
+page = Page.create!(title: "Project 1", ptype: projects, content: Faker::Lorem.paragraphs(5))
+Page.create!(title: "Project 2", ptype: projects, content: Faker::Lorem.paragraphs(5))
+Page.create!(title: "Project 3", ptype: projects, content: Faker::Lorem.paragraphs(5))
+Page.create!(title: "Project 4", ptype: projects, content: Faker::Lorem.paragraphs(5))
 
 book = Page.create!(title: "My book 1", ptype: books, content: Faker::Lorem.paragraphs(5))
 Page.create!(title: "My book 2", ptype: books, content: Faker::Lorem.paragraphs(5))
@@ -32,6 +33,10 @@ deprecated = BlogStatus.create!(name: "deprecated", color: "red")
 Blog.create!(name: "Active 1", status: active, url: "http://www.google.com")
 Blog.create!(name: "Active 2", status: active, url: "http://www.google.com")
 Blog.create!(name: "Deprecated 1", status: deprecated, url: "http://www.google.com")
+
+PageImage.create(title: "A kitten", content: "Black and white kitten", url: "http://placekitten.com/g/400/400", page: page)
+PageImage.create(title: "Another kitten", content: "Kitten kitten kitten", url: "http://placekitten.com/g/400/300", page: page)
+PageImage.create(url: "http://placekitten.com/g/300/400", page: page)
 
 PageInformation.create!(title: "Language", content: "Rails", page: page)
 PageInformation.create!(title: "Info 2", content: "Rails", page: page)

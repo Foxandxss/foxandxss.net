@@ -13,12 +13,18 @@ FactoryGirl.define do
   factory :page do
     sequence(:title) { |n| "Page #{n}" }
     association :ptype, factory: :page_type
-    image "/spec/fixtures/project.png"
     content { Faker::Lorem.paragraphs(5).join('\n') }
   end
 
   factory :page_type do
     sequence(:name) { |n| "Type #{n}" }
+  end
+
+  factory :page_image do
+    sequence(:title) { |n| "Information #"}
+    content { Faker::Lorem.paragraph }
+    sequence(:url) { |n| "/spec/fixtures/project#{n}.png"}
+    page
   end
 
   factory :page_information do

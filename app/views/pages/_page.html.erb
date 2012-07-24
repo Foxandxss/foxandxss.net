@@ -1,6 +1,23 @@
 <p><%= page.content %></p>
-<% unless page.image.blank? %>
-    <%= image_tag(page.image) %>
+<% if page.images.any? %>
+    <div id="carousel" class="carousel slide">
+      <!-- Carousel items -->
+      <div class="carousel-inner">
+        <% page.images.each_with_index do |image, index| %>
+            <div class="item <%= 'active' if index.eql?(1) %>"><%= image_tag image.url %>
+                <% if image.title? %> <!-- no need to check content, title cannot exist without content -->
+                    <div class="carousel-caption">
+                        <h4><%= image.title %></h4>
+                        <p><%= image.content %></p>
+                    </div>
+                <% end %>
+            </div>
+        <% end %>
+      </div>
+      <!-- Carousel nav -->
+      <a class="carousel-control left" href="#carousel" data-slide="prev">&lsaquo;</a>
+      <a class="carousel-control right" href="#carousel" data-slide="next">&rsaquo;</a>
+    </div>
 <% end %>
 
 <%= render page.informations %>

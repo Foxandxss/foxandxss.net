@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120720145542) do
+ActiveRecord::Schema.define(:version => 20120723170445) do
 
   create_table "blog_statuses", :force => true do |t|
     t.string   "name",       :null => false
@@ -31,8 +31,8 @@ ActiveRecord::Schema.define(:version => 20120720145542) do
   end
 
   create_table "news", :force => true do |t|
-    t.string   "title"
-    t.text     "content"
+    t.string   "title",      :null => false
+    t.text     "content",    :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -48,9 +48,18 @@ ActiveRecord::Schema.define(:version => 20120720145542) do
 
   add_index "options", ["name"], :name => "index_options_on_name", :unique => true
 
-  create_table "page_informations", :force => true do |t|
+  create_table "page_images", :force => true do |t|
     t.string   "title"
-    t.string   "content"
+    t.text     "content"
+    t.string   "url",        :null => false
+    t.integer  "page_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "page_informations", :force => true do |t|
+    t.string   "title",      :null => false
+    t.string   "content",    :null => false
     t.integer  "page_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -59,8 +68,8 @@ ActiveRecord::Schema.define(:version => 20120720145542) do
   add_index "page_informations", ["title", "page_id"], :name => "index_page_informations_on_title_and_page_id", :unique => true
 
   create_table "page_links", :force => true do |t|
-    t.string   "title"
-    t.string   "url"
+    t.string   "title",      :null => false
+    t.string   "url",        :null => false
     t.integer  "page_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -79,7 +88,6 @@ ActiveRecord::Schema.define(:version => 20120720145542) do
   create_table "pages", :force => true do |t|
     t.string   "title",      :null => false
     t.text     "content",    :null => false
-    t.string   "image"
     t.integer  "ptype_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

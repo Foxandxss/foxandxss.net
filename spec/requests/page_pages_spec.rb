@@ -23,11 +23,22 @@ describe "Page pages" do
       should have_content project.content
     end
 
-    it "should contain the image" do
-      should have_xpath("//img[@src=\"#{project.image}\"]")
-    end
-
     context "Page extras" do
+
+      context "Images" do
+
+        let!(:images) { FactoryGirl.create_list(:page_image, 3, page: project) }
+
+        before do
+          visit page_path project
+        end
+
+        it "should contain all images (carousel)" do
+          images.each do |image|
+            should have_xpath("//img[@src=\"#{image.url}\"]")
+          end
+        end
+      end
 
       context "Page information" do
 
