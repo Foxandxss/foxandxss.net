@@ -29,6 +29,16 @@ describe "Static pages" do
       it "should contain page title" do
         should have_content page_title.value
       end
+
+      context "No brand" do
+        let!(:page_title) { nil }
+
+        it "should contain a default title if there is no brand" do
+          should have_content "Page title"
+        end
+      end
+
+
     end
 
     context "Link to pages" do

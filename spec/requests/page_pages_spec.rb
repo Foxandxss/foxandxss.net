@@ -4,10 +4,9 @@ describe "Page pages" do
 
   subject { page }
 
-  let!(:page_title) { FactoryGirl.create(:option, name: "page_name", value: "Page Title") }
-
   describe "Show page" do
 
+    let!(:page_title) { FactoryGirl.create(:option, name: "page_name", value: "Page Title") }
     let!(:project) { FactoryGirl.create(:page) }
 
     before do

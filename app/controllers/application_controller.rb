@@ -6,5 +6,8 @@ class ApplicationController < ActionController::Base
   private
     def page_name
       @page_name = Option.find_by_name("page_name")
+      if @page_name.nil?
+        @page_name = Option.new(name: "page_name", value: "Page title")
+      end
     end
 end

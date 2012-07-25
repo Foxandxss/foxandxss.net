@@ -37,12 +37,21 @@
               <%= render_cell :navbar_blogs, :display %>
               <%= render_cell :navbar_pages, :display %>
             </ul>
+            <ul class="nav pull-right">
+              <li class="pull-right"><%= link_to "Contact me", new_contact_path %></li>
+            </ul>
           </div><!--/.nav-collapse -->
         </div>
       </div>
     </div>
 
     <div class="container">
+      <% flash.each do |name, msg| %>
+          <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+            <a class="close" data-dismiss="alert" href="#">×</a>
+            <%= msg %>
+          </div>
+      <% end %>
       <div class="content">
         <div class="row">
            <div class="span9">
