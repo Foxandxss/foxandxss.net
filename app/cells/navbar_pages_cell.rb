@@ -1,7 +1,7 @@
 class NavbarPagesCell < Cell::Rails
 
   def display
-    @pagetypes = PageType.all
+    @pagecategories = PageCategory.all
     render
   end
 

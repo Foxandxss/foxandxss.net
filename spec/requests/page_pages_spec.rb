@@ -15,7 +15,7 @@ describe "Page pages" do
     end
 
     it "should contain the page name on title (also project type)" do
-      should have_selector "title", text: "#{project.title} - #{project.ptype.name} - #{page_title.value}"
+      should have_selector "title", text: "#{project.title} - #{project.category.name} - #{page_title.value}"
     end
 
     it "should contain all page content" do
@@ -34,7 +34,7 @@ describe "Page pages" do
 
         it "should contain all images (carousel)" do
           images.each do |image|
-            should have_xpath("//img[@src=\"#{image.url}\"]")
+            should have_xpath("//img[@src=\"#{image.asset.url}\"]")
           end
         end
       end

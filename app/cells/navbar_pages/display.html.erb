@@ -1,4 +1,4 @@
-<% @pagetypes.each do |pt| %>
+<% @pagecategories.each do |pt| %>
     <% if pt.pages.size.eql?(1)%>
         <% pt.pages.each do |page| %>
             <li><%= link_to page.title, page %></li>

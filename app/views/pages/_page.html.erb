@@ -1,10 +1,10 @@
-<p><%= page.content %></p>
+<p><%= page.content.html_safe %></p>
 <% if page.images.any? %>
     <div id="carousel" class="carousel slide">
       <!-- Carousel items -->
       <div class="carousel-inner">
         <% page.images.each_with_index do |image, index| %>
-            <div class="item <%= 'active' if index.eql?(1) %>"><%= image_tag image.url %>
+            <div class="item <%= 'active' if index.eql?(0) %>"><%= image_tag image.asset.url %>
                 <% if image.title? %> <!-- no need to check content, title cannot exist without content -->
                     <div class="carousel-caption">
                         <h4><%= image.title %></h4>

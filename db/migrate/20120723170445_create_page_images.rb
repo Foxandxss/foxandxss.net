@@ -3,12 +3,10 @@ class CreatePageImages < ActiveRecord::Migration
     create_table :page_images do |t|
       t.string :title
       t.text :content
-      t.string :url, null: false
+      t.attachment :asset
       t.integer :page_id
 
       t.timestamps
     end
-
-    remove_column :pages, :image
   end
 end

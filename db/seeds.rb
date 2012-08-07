@@ -2,7 +2,7 @@ require 'faker'
 
 Option.delete_all
 Page.delete_all
-PageType.delete_all
+PageCategory.delete_all
 Blog.delete_all
 BlogStatus.delete_all
 PageInformation.delete_all
@@ -10,33 +10,35 @@ PageLink.delete_all
 News.delete_all
 Widget.delete_all
 PageImage.delete_all
+AdminUser.delete_all
 
 Option.create!(name: "page_name", value: "Foxandxss'")
+Option.create!(name: "page_footer", value: "Footer")
 
-projects = PageType.create!(name: "Projects")
-books = PageType.create!(name: "Books")
-about = PageType.create!(name: "About")
+projects = PageCategory.create!(name: "Projects")
+books = PageCategory.create!(name: "Books")
+about = PageCategory.create!(name: "About")
 
-page = Page.create!(title: "Project 1", ptype: projects, content: Faker::Lorem.paragraphs(5))
-Page.create!(title: "Project 2", ptype: projects, content: Faker::Lorem.paragraphs(5))
-Page.create!(title: "Project 3", ptype: projects, content: Faker::Lorem.paragraphs(5))
-Page.create!(title: "Project 4", ptype: projects, content: Faker::Lorem.paragraphs(5))
+page = Page.create!(title: "Project 1", category: projects, content: Faker::Lorem.paragraphs(5))
+Page.create!(title: "Project 2", category: projects, content: Faker::Lorem.paragraphs(5))
+Page.create!(title: "Project 3", category: projects, content: Faker::Lorem.paragraphs(5))
+Page.create!(title: "Project 4", category: projects, content: Faker::Lorem.paragraphs(5))
 
-book = Page.create!(title: "My book 1", ptype: books, content: Faker::Lorem.paragraphs(5))
-Page.create!(title: "My book 2", ptype: books, content: Faker::Lorem.paragraphs(5))
+book = Page.create!(title: "My book 1", category: books, content: Faker::Lorem.paragraphs(5))
+Page.create!(title: "My book 2", category: books, content: Faker::Lorem.paragraphs(5))
 
-Page.create!(title: "About Me", ptype: about, content: Faker::Lorem.paragraphs(5))
+Page.create!(title: "About Me", category: about, content: Faker::Lorem.paragraphs(5))
 
-active = BlogStatus.create!(name: "active", color: "green")
-deprecated = BlogStatus.create!(name: "deprecated", color: "red")
+active = BlogStatus.create!(name: "active", color: "#418528")
+deprecated = BlogStatus.create!(name: "deprecated", color: "#F00")
 
 Blog.create!(name: "Active 1", status: active, url: "http://www.google.com")
 Blog.create!(name: "Active 2", status: active, url: "http://www.google.com")
 Blog.create!(name: "Deprecated 1", status: deprecated, url: "http://www.google.com")
 
-PageImage.create(title: "A kitten", content: "Black and white kitten", url: "http://placekitten.com/g/400/400", page: page)
-PageImage.create(title: "Another kitten", content: "Kitten kitten kitten", url: "http://placekitten.com/g/400/300", page: page)
-PageImage.create(url: "http://placekitten.com/g/300/400", page: page)
+PageImage.create(title: "A kitten", content: "Black and white kitten", asset: URI.parse("http://placekitten.com/g/400/400"), page: page)
+PageImage.create(title: "Another kitten", content: "Kitten kitten kitten", asset: URI.parse("http://placekitten.com/g/400/300"), page: page)
+PageImage.create(asset: URI.parse("http://placekitten.com/g/300/400"), page: page)
 
 PageInformation.create!(title: "Language", content: "Rails", page: page)
 PageInformation.create!(title: "Info 2", content: "Rails", page: page)
@@ -73,3 +75,5 @@ Widget.create!(title: "Stackoverflow profile", content: '<a href="http://stackov
 <img src="http://stackoverflow.com/users/flair/123204.png" width="208" height="58" alt="profile for Jesus Rodriguez at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for Jesus Rodriguez at Stack Overflow, Q&amp;A for professional and enthusiast programmers">
 </a>
 ')
+
+AdminUser.create!(:email => 'admin@example.com', :password => 'password', :password_confirmation => 'password')

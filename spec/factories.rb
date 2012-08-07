@@ -12,18 +12,19 @@ FactoryGirl.define do
 
   factory :page do
     sequence(:title) { |n| "Page #{n}" }
-    association :ptype, factory: :page_type
+    association :category, factory: :page_category
     content { Faker::Lorem.paragraphs(5).join('\n') }
   end
 
-  factory :page_type do
+  factory :page_category do
     sequence(:name) { |n| "Type #{n}" }
   end
 
   factory :page_image do
     sequence(:title) { |n| "Information #"}
     content { Faker::Lorem.paragraph }
-    sequence(:url) { |n| "/spec/fixtures/project#{n}.png"}
+    sequence(:asset) { |n| File.new(Rails.root.join('spec', 'fixtures', "project#{n}.png"))}
+    #asset { paperclip_fixture('page_image', 'asset', 'png')} # Doesn't work yet, bugget it seems.
     page
   end
 

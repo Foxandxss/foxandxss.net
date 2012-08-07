@@ -8,12 +8,12 @@ describe "Static pages" do
 
   describe "navbar" do
 
-    let(:pt_projects) { FactoryGirl.create(:page_type, name: "Projects") }
-    let(:pt_books) { FactoryGirl.create(:page_type, name: "Books") }
-    let(:pt_about) { FactoryGirl.create(:page_type, name: "About") }
-    let!(:projects) { FactoryGirl.create_list(:page, 3, ptype: pt_projects) }
-    let!(:books) { FactoryGirl.create_list(:page, 3, ptype: pt_books) }
-    let!(:about) { FactoryGirl.create(:page, title: "About Me", ptype: pt_about) }
+    let(:pc_projects) { FactoryGirl.create(:page_category, name: "Projects") }
+    let(:pc_books) { FactoryGirl.create(:page_category, name: "Books") }
+    let(:pc_about) { FactoryGirl.create(:page_category, name: "About") }
+    let!(:projects) { FactoryGirl.create_list(:page, 3, category: pc_projects) }
+    let!(:books) { FactoryGirl.create_list(:page, 3, category: pc_books) }
+    let!(:about) { FactoryGirl.create(:page, title: "About Me", category: pc_about) }
 
     let(:status_active) { FactoryGirl.create(:blog_status, name: "active", color: "green") }
     let(:status_deprecated) { FactoryGirl.create(:blog_status, name: "deprecated", color: "red") }
@@ -135,6 +135,29 @@ describe "Static pages" do
           end
         end
       end
+    end
+  end
+
+  describe "Footer" do
+
+    before do
+      visit root_path
+    end
+
+    context "Without a footer option" do
+
+      it { should have_content "Page footer" }
+    end
+
+    context "With a footer option" do
+
+      let!(:page_footer) { FactoryGirl.create(:option, name: "page_footer", value: "My footer") }
+
+      before do
+        visit root_path
+      end
+
+      it { should have_content page_footer.value }
     end
   end
 end
