@@ -3,6 +3,4 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 jQuery ->
-  $(".carousel").carousel({
-    interval: 10000,
-  })
+  $('a.slideshow-image').fancybox();

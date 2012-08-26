@@ -1,6 +1,6 @@
 <%= simple_form_for @contact do |f| %>
     <%= f.input :name %>
-    <%= f.input :email, hint: 'example@example.org' %>
-    <%= f.input :message, as: :text %>
+    <%= f.input :email %>
+    <%= f.input :message, as: :text, input_html: { cols: 74 } %>
     <%= f.submit 'Send' %>
 <% end %>

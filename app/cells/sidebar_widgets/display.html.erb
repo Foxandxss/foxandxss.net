@@ -1,6 +1,6 @@
 <% @widgets.each do |widget| %>
     <li>
-      <%= widget.title %>
-      <%= widget.content.html_safe %>
+      <h5><%= widget.title %></h5>
+      <div><%= widget.content.html_safe %></div>
     </li>
 <% end %>

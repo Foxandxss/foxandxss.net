@@ -1,24 +1,24 @@
-<p><%= page.content.html_safe %></p>
+<%= page.content.html_safe %>
 <% if page.images.any? %>
-    <div id="carousel" class="carousel slide">
-      <!-- Carousel items -->
-      <div class="carousel-inner">
-        <% page.images.each_with_index do |image, index| %>
-            <div class="item <%= 'active' if index.eql?(0) %>"><%= image_tag image.asset.url %>
-                <% if image.title? %> <!-- no need to check content, title cannot exist without content -->
-                    <div class="carousel-caption">
-                        <h4><%= image.title %></h4>
-                        <p><%= image.content %></p>
-                    </div>
-                <% end %>
-            </div>
-        <% end %>
-      </div>
-      <!-- Carousel nav -->
-      <a class="carousel-control left" href="#carousel" data-slide="prev">&lsaquo;</a>
-      <a class="carousel-control right" href="#carousel" data-slide="next">&rsaquo;</a>
-    </div>
+    <ul class="slideshow" width="600" height="400">
+      <% page.images.each do |image| %>
+        <li>
+          <a class="slideshow-image" href="<%= image.asset.url %>"><%= image_tag image.asset.url(:large) %></a>
+          <% if image.title? %>
+              <div class="slideshow-caption">
+                <h4><%= image.title %></h4>
+                <p><%= image.content %></p>
+              </div>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
 <% end %>
 
-<%= render page.informations %>
-<%= render page.links %>
+<ul id="page-information">
+    <%= render page.informations %>
+</ul>
+
+<ul id="page-links">
+    <%= render page.links %>
+</ul>

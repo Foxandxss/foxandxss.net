@@ -1,3 +1,74 @@
 // Place all the styles related to the pages controller here.
-// They will automatically be included in application.css.
+// They will automatically be included in application.css.scss.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#wrap {
+  .slideshow-wrap {
+    margin-top: 25px;
+
+    .slideshow-inner {
+      border: none;
+
+      .slideshow {
+        li {
+          display: none;
+          position: relative;
+
+          &.current {
+            display: block;
+          }
+
+          .slideshow-caption {
+            background-color: rgba(0, 0, 0, 0.80);
+            padding: 10px 15px 5px;
+            position: absolute;
+            right: 0px;
+            bottom: 0px;
+            left: 0px;
+
+            h4 {
+              color: white;
+              font-size: 14px;
+              margin: 0;
+            }
+
+            p {
+              color: white;
+              font-size: 13px;
+              margin: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  #page-information, #page-links {
+    color: #666;
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    margin-left: 15px;
+    margin-bottom: 5px;
+
+    span {
+      &:first-child {
+        color: #6491FA;
+        font-size: 15px;
+        font-weight: bold;
+      }
+    }
+  }
+
+  #page-information {
+    list-style-image: url(triangle-bullet.png);
+  }
+
+  #page-links {
+    list-style-image: url(square-bullet.png);
+
+    a {
+      color: #666;
+      text-decoration: underline;
+    }
+  }
+}

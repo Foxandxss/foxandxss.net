@@ -12,6 +12,14 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require twitter/bootstrap
 //= require rails-timeago
-//= require_tree .
+//= require prettify
+//= require kickstart
+//= require pages
+
+$(function() {
+   $('.error').each(function(index, value) {
+       $(value).siblings().addClass('error');
+//       console.log($(value).siblings());
+   })
+});

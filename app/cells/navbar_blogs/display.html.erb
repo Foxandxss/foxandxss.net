@@ -1,15 +1,9 @@
 <% unless @blogs.empty? %>
-    <li class="dropdown">
-      <a href="#"
-         class="dropdown-toggle"
-         data-toggle="dropdown">
-        Blogs
-        <b class="caret"></b>
-      </a>
-      <ul class="dropdown-menu">
-        <% @blogs.each do |blog| %>
+    <li id="blogs-menu"><a href="#">Blogs</a>
+      <ul>
+          <% @blogs.each do |blog| %>
             <li><%= link_to blog.name, blog.url, class: "blog-#{blog.status.name}", target: "_blank" %></li>
-        <% end %>
+          <% end %>
       </ul>
     </li>
 <% end %>

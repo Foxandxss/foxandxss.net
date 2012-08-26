@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120726183831) do
+ActiveRecord::Schema.define(:version => 20120812194216) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -64,10 +64,14 @@ ActiveRecord::Schema.define(:version => 20120726183831) do
   end
 
   create_table "news", :force => true do |t|
-    t.string   "title",      :null => false
-    t.text     "content",    :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "title",              :null => false
+    t.text     "content",            :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "news", ["title"], :name => "index_news_on_title"

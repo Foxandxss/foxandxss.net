@@ -1,0 +1,20 @@
+#new_contact {
+  label {
+    color: #6491FA;
+    display: block;
+    margin-bottom: 5px;
+
+    &.error {
+      color: red;
+    }
+  }
+
+  .input {
+    margin-bottom: 16px;
+  }
+
+  input, textarea {
+    box-shadow: none;
+    color: #666;
+  }
+}

@@ -11,5 +11,5 @@ Foxandxss::Application.routes.draw do
 
   ActionDispatch::Routing::Translator.translate_from_file('config/locales/routes.yml', {:prefix_on_default_locale => true})
 
-  match '*path', to: redirect { | params, request| "/#{I18n.default_locale}#{request.fullpath}"}
+  match '*path', to: redirect { | params, request| "/#{I18n.default_locale}#{request.fullpath}"}, constraints: lambda { |req| !req.path.starts_with? "/#{I18n.default_locale}/" }
 end

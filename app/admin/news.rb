@@ -13,6 +13,8 @@ ActiveAdmin.register News do
     f.inputs "" do
       f.input :title, label: false, input_html: { width: 50 }
       f.input :content, as: :ckeditor, label: false
+      f.input :image, label: false, as: :file, hint: f.object.image.url =~ /missing/ ? f.template.content_tag(:span, "No Image Yet") : f.template.image_tag(f.object.image.url(:thumb))
+
     end
     f.buttons
   end
@@ -26,4 +28,13 @@ ActiveAdmin.register News do
     end
     active_admin_comments
   end
+
+  member_action :lock, :method => :get do
+    @news = News.find(params[:id])
+  end
+
+  action_item :only => :edit do
+    link_to('View on site', lock_admin_news_path(news)) if news.title?
+  end
+
 end
