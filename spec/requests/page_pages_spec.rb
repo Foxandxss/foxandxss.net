@@ -32,9 +32,9 @@ describe "Page pages" do
           visit page_path project
         end
 
-        it "should contain all images (carousel)" do
+        it "should contain all images (slideshow)" do
           images.each do |image|
-            should have_xpath("//img[@src=\"#{image.asset.url}\"]")
+            should have_xpath("//img[@src=\"#{image.asset.url(:large)}\"]")
           end
         end
       end
@@ -49,7 +49,7 @@ describe "Page pages" do
 
         it "should contain all that info" do
           infos.each do |info|
-            should have_selector "p", text: info.title
+            should have_selector "span", text: info.title
             should have_selector "span", text: info.content
           end
         end
@@ -65,7 +65,7 @@ describe "Page pages" do
 
         it "should contain all page page_links" do
           page_links.each do |link|
-            should have_selector "p", text: link.title
+            should have_selector "span", text: link.title
             should have_selector "a", text: link.url
           end
         end

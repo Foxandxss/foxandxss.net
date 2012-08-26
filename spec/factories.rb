@@ -7,6 +7,8 @@ FactoryGirl.define do
 
   factory :news do
     sequence(:title) { |n| "News #{n}" }
+    #sequence(:image) { |n| File.new(Rails.root.join('spec', 'fixtures', "project#{n}.png")) }
+    image File.new(Rails.root.join('spec', 'fixtures', "project1.png"))
     content { Faker::Lorem.paragraphs(3).join('\n') }
   end
 
@@ -21,10 +23,10 @@ FactoryGirl.define do
   end
 
   factory :page_image do
-    sequence(:title) { |n| "Information #"}
+    sequence(:title) { |n| "Information #" }
     content { Faker::Lorem.paragraph }
-    sequence(:asset) { |n| File.new(Rails.root.join('spec', 'fixtures', "project#{n}.png"))}
-    #asset { paperclip_fixture('page_image', 'asset', 'png')} # Doesn't work yet, bugget it seems.
+    sequence(:asset) { |n| File.new(Rails.root.join('spec', 'fixtures', "project#{n}.png")) }
+    #asset { paperclip_fixture('page_image', 'asset', 'png')} # Doesn't work yet, bugged it seems.
     page
   end
 
@@ -47,7 +49,7 @@ FactoryGirl.define do
   end
 
   factory :blog_status do
-    name { Faker::Lorem.words(1).join('')}
+    name { Faker::Lorem.words(1).join('') }
     color "#000"
   end
 

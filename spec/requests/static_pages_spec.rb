@@ -107,6 +107,7 @@ describe "Static pages" do
         news.each do |a_new|
           should have_content a_new.title
           should have_content a_new.content
+          should have_xpath("//img[@src=\"#{a_new.image.url(:large)}\"]")
         end
       end
 
@@ -114,6 +115,7 @@ describe "Static pages" do
         old_news.each do |a_new|
           should_not have_content a_new.title
           should_not have_content a_new.content
+          should_not have_xpath("//img[@src=\"#{a_new.image.url(:large)}\"]")
         end
       end
 
