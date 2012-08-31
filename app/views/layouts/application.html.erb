@@ -37,6 +37,11 @@
             <span class="icon medium blue" data-icon="@"></span>Contact me
         <% end %>
       </li>
+      <% if signed_in? %>
+          <li>
+            <%= link_to "Admin", admin_dashboard_path %>
+          </li>
+      <% end %>
     </ul>
     <div class="container clearfix">
 

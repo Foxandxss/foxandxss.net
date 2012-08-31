@@ -57,4 +57,10 @@ FactoryGirl.define do
     title { Faker::Lorem.sentence }
     content { Faker::Lorem.paragraph }
   end
+
+  factory :contact do
+    name { Faker::Name.first_name }
+    email { Faker::Internet.email }
+    message { Faker::Lorem.sentence }
+  end
 end
