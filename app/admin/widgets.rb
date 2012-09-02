@@ -1,5 +1,6 @@
 ActiveAdmin.register Widget do
   index do
+    selectable_column
     column :title do |widget|
       link_to widget.title, admin_widget_path(widget)
     end

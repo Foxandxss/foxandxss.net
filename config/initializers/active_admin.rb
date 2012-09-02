@@ -47,6 +47,12 @@ ActiveAdmin.setup do |config|
   # This will ONLY change the title for the admin section. Other
   # namespaces will continue to use the main "site_title" configuration.
 
+  config.root_to = "admin_users#index"
+
+  # == Batch Actions
+  # Enable and disable Batch Actions
+  config.batch_actions = true
+
   # == User Authentication
   #
   # Active Admin will automatically call an authentication

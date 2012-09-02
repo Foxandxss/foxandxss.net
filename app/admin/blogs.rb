@@ -2,6 +2,7 @@ ActiveAdmin.register Blog do
   menu parent: "Blog", priority: 1
 
   index do
+    selectable_column
     column :name do |blog|
       link_to blog.name, admin_blog_path(blog)
     end

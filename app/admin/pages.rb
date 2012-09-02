@@ -2,6 +2,7 @@ ActiveAdmin.register Page do
   menu parent: "Page", priority: 1
 
   index do
+    selectable_column
     column :title do |page|
       link_to page.title, admin_page_path(page)
     end

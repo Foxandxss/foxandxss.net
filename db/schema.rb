@@ -56,11 +56,11 @@ ActiveRecord::Schema.define(:version => 20120812194216) do
   add_index "blog_statuses", ["name"], :name => "index_blog_statuses_on_name", :unique => true
 
   create_table "blogs", :force => true do |t|
-    t.string   "name",             :null => false
-    t.string   "url",              :null => false
-    t.integer  "blog_statuses_id", :null => false
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.string   "name",           :null => false
+    t.string   "url",            :null => false
+    t.integer  "blog_status_id", :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "news", :force => true do |t|

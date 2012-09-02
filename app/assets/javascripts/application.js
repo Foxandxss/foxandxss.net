@@ -16,10 +16,5 @@
 //= require prettify
 //= require kickstart
 //= require pages
+//= require contact_pages
 
-$(function() {
-   $('.error').each(function(index, value) {
-       $(value).siblings().addClass('error');
-//       console.log($(value).siblings());
-   })
-});

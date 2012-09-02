@@ -2,7 +2,7 @@ class BlogStatus < ActiveRecord::Base
   before_save :add_sharp
   attr_accessible :color, :name, :blogs
 
-  has_many :blogs
+  has_many :blogs, dependent: :restrict
 
   validates :name, :color, presence: true
 

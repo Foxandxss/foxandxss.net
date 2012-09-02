@@ -1,5 +1,6 @@
 ActiveAdmin.register News do
   index do
+    selectable_column
     column :title do |news|
       link_to news.title, admin_news_path(news)
     end
