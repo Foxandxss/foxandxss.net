@@ -62,5 +62,6 @@ FactoryGirl.define do
     name { Faker::Name.first_name }
     email { Faker::Internet.email }
     message { Faker::Lorem.sentence }
+    skip_create
   end
 end

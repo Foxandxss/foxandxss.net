@@ -197,3 +197,34 @@ es:
   activerecord:
     errors:
       <<: *errors
+
+
+  # Foxandxss.net translation
+
+  layouts:
+    application:
+      contact_me: Contactar
+      top: arriba
+
+  simple_form:
+      labels:
+        contact:
+          name: Nombre
+          email: Email
+          message: Mensaje
+
+  helpers:
+    submit:
+      contact:
+        create: Enviar
+
+  # Active admin
+
+  devise:
+    sessions:
+      admin_user:
+        signed_in: Ha entrado al sistema correctamente
+
+  # Otros
+  email_sent: El email ha sido enviado.
+  contact_form_subject: Has recibido un correo de Foxandxss.net

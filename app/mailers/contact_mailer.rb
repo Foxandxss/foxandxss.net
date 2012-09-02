@@ -9,6 +9,6 @@ class ContactMailer < ActionMailer::Base
   def contact_form(contact)
     @contact = contact
 
-    mail to: @contact.email, subject: "Hello"
+    mail to: @contact.email, subject: t("contact_form_subject")
   end
 end

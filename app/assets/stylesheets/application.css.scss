@@ -107,7 +107,7 @@ footer {
     margin-right: 10px;
   }
 
-  > a {
+  #footer_links {
     color: #848484;
     font-family: "Open Sans", sans-serif;
     font-size: 13px;
@@ -115,6 +115,10 @@ footer {
     position: absolute;
     top: 7px;
     left: 10px;
+
+    a {
+      margin-right: 5px;
+    }
   }
 }
 

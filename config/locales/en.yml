@@ -2,4 +2,32 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  layouts:
+    application:
+      contact_me: Contact me
+      top: top
+
+
+
+  simple_form:
+    labels:
+      contact:
+        name: Name
+        email: Email
+        message: Message
+
+  helpers:
+      submit:
+        contact:
+          create: Send
+
+  devise:
+      sessions:
+        admin_user:
+          signed_in: You have logged-in successfully
+
+
+  # others
+  email_sent: Email has been sent.
+  contact_form_subject: You got a message from Foxandxss.net
+

@@ -34,7 +34,7 @@
       <%= render_cell :navbar_pages, :display %>
       <li>
         <%= link_to new_contact_path do %>
-            <span class="icon medium blue" data-icon="@"></span>Contact me
+            <span class="icon medium blue" data-icon="@"></span><%=t ".contact_me" %>
         <% end %>
       </li>
       <% if signed_in? %>
@@ -65,7 +65,17 @@
     </div> <!-- /container -->
     <div class="clear"></div>
     <footer>
-      <a href="#top-of-page">top</a>
+
+      <div id="footer_links">
+        <a href="#top-of-page"><%=t '.top' %></a>
+        <%= link_to_unless_current image_tag("gb.png"), locale: "en" do %>
+            <%= image_tag("gb_bw.png") %>
+        <% end %>
+        <%= link_to_unless_current image_tag("es.png"), locale: "es" do %>
+            <%= image_tag("es_bw.png") %>
+        <% end %>
+      </div>
+
       <p><%= @page_footer.value.html_safe %></p>
     </footer>
   </div>
