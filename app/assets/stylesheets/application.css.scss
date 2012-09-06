@@ -8,7 +8,6 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
  *= require kickstart
  *= require kickstart-forms
  *= require kickstart-icons
@@ -22,6 +21,7 @@
  *= require static_pages
  *= require contacts_pages
  *= require pages
+ *= require_self
  */
 
 /* Standard selectors */
@@ -49,6 +49,10 @@ input[type="button"]{
 
 blockquote{
   font-family: "Trebuchet Ms", arial, verdana, sans-serif;
+}
+
+strong, b {
+  background-color: white;
 }
 
 /* Application stuff */
