@@ -9,8 +9,16 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require prettify
  *= require kickstart
+ *= require kickstart-forms
+ *= require kickstart-icons
+ *= require kickstart-buttons
+ *= require kickstart-menus
+ *= require kickstart-grid
+ *= require jquery.fancybox
+ *= require prettify
+ *= require chosen
+ *= require tiptip
  *= require static_pages
  *= require contacts_pages
  *= require pages

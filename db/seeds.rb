@@ -1,6 +1,6 @@
 #require 'faker'
 #
-#Option.delete_all
+Option.delete_all
 #Page.delete_all
 #PageCategory.delete_all
 #Blog.delete_all
@@ -12,8 +12,8 @@
 #PageImage.delete_all
 AdminUser.delete_all
 #
-#Option.create!(name: "page_name", value: "Foxandxss'")
-#Option.create!(name: "page_footer", value: "Footer")
+Option.create!(name: "page_name", value: "Foxandxss'")
+Option.create!(name: "page_footer", value: "Footer")
 #
 #projects = PageCategory.create!(name: "Projects")
 #books = PageCategory.create!(name: "Books")

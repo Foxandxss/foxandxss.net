@@ -13,7 +13,7 @@ class Page < ActiveRecord::Base
   accepts_nested_attributes_for :images, allow_destroy: true
   accepts_nested_attributes_for :links, allow_destroy: true
 
-  validates :title, :content, presence: true
+  validates :title, :content, :category, presence: true
 
   # We let the user create a custom slug, but friendly_id have to check it before
   def normalize_friendly_id(string)
