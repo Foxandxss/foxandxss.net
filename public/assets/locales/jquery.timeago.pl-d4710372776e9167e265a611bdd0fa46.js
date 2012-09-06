@@ -1,0 +1,2 @@
+// Polish
+(function(){function e(e,t,n){var r=e%10;return r>1&&r<5&&(e>20||e<10)?t:n}jQuery.timeago.settings.strings={prefixAgo:null,prefixFromNow:"za",suffixAgo:"temu",suffixFromNow:null,seconds:"mniej niż minutę",minute:"minutę",minutes:function(t){return e(t,"%d minuty","%d minut")},hour:"godzinę",hours:function(t){return e(t,"%d godziny","%d godzin")},day:"dzień",days:"%d dni",month:"miesiąc",months:function(t){return e(t,"%d miesiące","%d miesięcy")},year:"rok",years:function(t){return e(t,"%d lata","%d lat")}}})();
