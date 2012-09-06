@@ -14,7 +14,7 @@ ActiveAdmin.register News do
     f.inputs "" do
       f.input :title, label: false, input_html: { width: 50 }
       f.input :content, as: :ckeditor, label: false
-      f.input :image, label: false, as: :file, hint: f.object.image.url =~ /missing/ ? f.template.content_tag(:span, "No Image Yet") : f.template.image_tag(f.object.image.url(:thumb))
+      f.input :image, label: false, as: :file, hint: f.object.image.url =~ /missing/ ? f.template.content_tag(:span, "Size: 580x150") : f.template.image_tag(f.object.image.url(:thumb))
 
     end
     f.buttons

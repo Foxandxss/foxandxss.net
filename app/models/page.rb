@@ -1,5 +1,8 @@
 class Page < ActiveRecord::Base
-  attr_accessible :content, :image, :title, :category, :category_id, :informations, :informations_attributes, :images_attributes, :links_attributes
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
+  attr_accessible :content, :image, :title, :category, :slug, :category_id, :informations, :informations_attributes, :images_attributes, :links_attributes
 
   belongs_to :category, class_name: "PageCategory"
   has_many :informations, class_name: "PageInformation"
@@ -11,4 +14,13 @@ class Page < ActiveRecord::Base
   accepts_nested_attributes_for :links, allow_destroy: true
 
   validates :title, :content, presence: true
+
+  # We let the user create a custom slug, but friendly_id have to check it before
+  def normalize_friendly_id(string)
+    if slug.blank?
+      super
+    else
+      super(slug)
+    end
+  end
 end

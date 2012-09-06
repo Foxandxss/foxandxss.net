@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120812194216) do
+ActiveRecord::Schema.define(:version => 20120906133321) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -131,8 +131,10 @@ ActiveRecord::Schema.define(:version => 20120812194216) do
     t.integer  "category_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "slug"
   end
 
+  add_index "pages", ["slug"], :name => "index_pages_on_slug", :unique => true
   add_index "pages", ["title"], :name => "index_pages_on_title"
 
   create_table "widgets", :force => true do |t|

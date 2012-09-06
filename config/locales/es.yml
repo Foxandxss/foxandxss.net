@@ -225,6 +225,10 @@ es:
       admin_user:
         signed_in: Ha entrado al sistema correctamente
 
+  failure:
+    admin_user:
+      unauthenticated: No está autentificado
+
   # Otros
   email_sent: El email ha sido enviado.
   contact_form_subject: Has recibido un correo de Foxandxss.net

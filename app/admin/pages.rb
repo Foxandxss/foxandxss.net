@@ -16,6 +16,7 @@ ActiveAdmin.register Page do
     f.inputs "Page", class: "inputs left" do
       f.input :category, include_blank: false
       f.input :title
+      f.input :slug, :label => "URL"
       f.input :content, as: :ckeditor, label: false
     end
 
@@ -23,7 +24,7 @@ ActiveAdmin.register Page do
       f.has_many :images do |i|
         i.input :title
         i.input :content, as: :string
-        i.input :asset, as: :file, label: "Image", hint: i.object.asset.url =~ /missing/ ? i.template.content_tag(:span, "No Image Yet") : i.template.image_tag(i.object.asset.url(:thumb))
+        i.input :asset, as: :file, label: "Image", hint: i.object.asset.url =~ /missing/ ? i.template.content_tag(:span, "Size: 600x400") : i.template.image_tag(i.object.asset.url(:thumb))
         i.input :_destroy, as: :boolean, label: "Delete"
       end
     end
@@ -49,6 +50,7 @@ ActiveAdmin.register Page do
   show do |page|
     attributes_table do
       row :title
+      row :slug
       row :content do
         page.content.html_safe
       end

@@ -31,51 +31,57 @@
 // Import jPicker CSS
 @import "jPicker";
 
-.has_many {
-  padding: 0 10px;
+body.active_admin {
+  .has_many {
+    padding: 0 10px;
 
-  h3 {
+    h3 {
+      display: none;
+    }
+  }
+
+  .has_many_fields.inputs {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    border-radius: 0;
+    -webkit-border-radius: none;
+    -moz-border-radius: none;
+    border-bottom: 1px solid #ddd;
+  }
+
+  #main_content {
+    .actions {
+      clear: both;
+    }
+  }
+
+  .left {
+    float: left;
+    width: 50%;
+    margin-bottom: 20px;
+  }
+
+  .right {
+    float: right;
+    width: 49%;
+    margin-left: 1%;
+    margin-bottom: 20px;
+  }
+
+  #main_content form fieldset > ol > li.boolean label {
+    width: 84%;
+  }
+
+  #main_content .informations .has_many_fields li:not(:first-child), #main_content .links .has_many_fields li:not(:first-child) {
     display: none;
   }
-}
 
-.has_many_fields.inputs {
-  box-shadow: none;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  border-radius: 0;
-  -webkit-border-radius: none;
-  -moz-border-radius: none;
-  border-bottom: 1px solid #ddd;
-}
-
-#main_content {
-  .buttons {
-    clear: both;
+  #main_content .images .has_many_fields li:not(.file) {
+    display: none;
   }
-}
 
-.left {
-  float: left;
-  width: 50%;
-  margin-bottom: 20px;
-}
-
-.right {
-  float: right;
-  width: 49%;
-  margin-left: 1%;
-  margin-bottom: 20px;
-}
-
-#main_content form fieldset > ol > li.boolean label {
-  width: 84%;
-}
-
-#main_content .informations .has_many_fields li:not(:first-child), #main_content .links .has_many_fields li:not(:first-child) {
-  display: none;
-}
-
-#main_content .images .has_many_fields li:not(.file) {
-  display: none;
+  p.inline-hints {
+    margin-left: 0 !important;
+  }
 }
