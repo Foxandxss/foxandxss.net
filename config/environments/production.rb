@@ -66,16 +66,16 @@ Foxandxss::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
-  config.action_mailer.default_url_options = { :host => 'foxandxss.net' }
+  config.action_mailer.default_url_options = { host: Settings.host }
   config.action_mailer.delivery_method = :smtp
 
   ActionMailer::Base.smtp_settings = {
-      address:               "smtp.gmail.com",
-      port:                  587,
-      domain:                "gmail.com",
-      user_name:             "youremail",
-      password:              "yourpassword",
-      authentication:        "plain",
-      enable_starttls_auto:  true
+      address:               Settings.email.address,
+      port:                  Settings.email.port,
+      domain:                Settings.email.domain,
+      user_name:             Settings.email.user_name,
+      password:              Settings.email.password,
+      authentication:        Settings.email.authentication,
+      enable_starttls_auto:  Settings.email.enable_starttls_auto
   }
 end

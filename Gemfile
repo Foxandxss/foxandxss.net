@@ -33,3 +33,4 @@ gem "ckeditor"
 gem "paperclip"
 gem 'rails-translate-routes'
 gem "friendly_id", "~> 4.0.1"
+gem "rails_config"

@@ -1,0 +1,11 @@
+email:
+  address: smtp.example.com
+  port: 111
+  domain: example.com
+  user_name: mail@example.com
+  password: secret
+  authentication: plain
+  enable_starttls_auto: false
+
+host: example.com
+mailer_sender: mail@example.com

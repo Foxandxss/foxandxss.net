@@ -35,6 +35,12 @@
           }
         }
       }
+
+      li.last {
+        .horizontal-line {
+          border: none;
+        }
+      }
     }
 
     .pagination {
