@@ -14,12 +14,21 @@ group :test, :development do
   gem 'rspec-rails'
 end
 
+group :development do
+  gem 'capistrano'
+  gem 'rvm-capistrano'
+end
+
 group :test do
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'rspec-cells'
   gem 'launchy'
+end
+
+group :production do
+  gem 'thin'
 end
 
 gem 'jquery-rails'
