@@ -15,7 +15,7 @@
 
     <style>
         <% BlogStatus.all.each do |status| %>
-        #blogs-menu a.blog-<%= status.name %> {
+        #blogs-menu a.blog-<%= status.name.gsub(/\s+/, "") %> {
             color: <%= status.color %>
         }
         <% end %>
