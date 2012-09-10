@@ -1,3 +1,0 @@
-== Foxandxss.net Home page
-
-This is a Rails project for Foxandxss' Home page.

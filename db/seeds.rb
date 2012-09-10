@@ -10,7 +10,7 @@ Option.delete_all
 #News.delete_all
 #Widget.delete_all
 #PageImage.delete_all
-AdminUser.delete_all
+#AdminUser.delete_all
 #
 Option.create!(name: "page_name", value: "Foxandxss'")
 Option.create!(name: "page_footer", value: "Footer")
@@ -77,4 +77,4 @@ Option.create!(name: "page_footer", value: "Footer")
 #</a>
 #')
 
-AdminUser.create!(:email => 'admin@example.com', :password => 'password', :password_confirmation => 'password')
+# AdminUser.create!(:email => 'admin@example.com', :password => 'password', :password_confirmation => 'password')
