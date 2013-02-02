@@ -46,7 +46,7 @@ Foxandxss::Application.configure do
   # config.action_controller.asset_host = "http://assets.example.com"
 
   # Precompile additional assets (application.js, application.css.scss, and all non-JS/CSS are already added)
-  # config.assets.precompile += %w( search.js )
+  config.assets.precompile += %w( locales/jquery.timeago.es.js )
   config.assets.precompile += Ckeditor.assets
 
   # Disable delivery errors, bad email addresses will be ignored

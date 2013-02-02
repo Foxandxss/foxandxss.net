@@ -1,0 +1,76 @@
+set :rvm_ruby_string, ENV['GEM_HOME'].gsub(/.*\//,"")
+#set :rvm_path, '/usr/local/rvm'
+#set :rvm_bin_path, '/usr/local/rvm/bin'
+
+before 'deploy:setup', 'rvm:create_gemset' # only create gemset
+after "deploy:finalize_update", "bundle"
+
+desc "Install the bundle"
+task :bundle do
+  run "bundle install --gemfile #{release_path}/Gemfile --without development test"
+end
+
+require 'rvm/capistrano'
+
+set :application, "foxandxss"
+set :use_sudo, false
+set :scm, :git
+set :repository,  "git@github.com:Foxandxss/#{application}.net.git"
+
+server "foxandxss.net", :app, :web, :db, primary: true
+
+set :user, "http"
+set :deploy_to, "/srv/http/ruby/thin/#{application}"
+set :deploy_via, :remote_cache
+
+default_run_options[:pty] = true
+
+namespace :deploy do
+  %w[start stop restart].each do |command|
+    desc "#{command} thin server"
+    task command, roles: :app, except: {no_release: true} do
+      run sudo "/etc/init.d/thin #{command} #{application}"
+    end
+  end
+
+  namespace :assets do
+    desc 'Run the precompile task locally and rsync with shared'
+    task :precompile, :roles => :web, :except => { :no_release => true } do
+      %x{bundle exec rake assets:precompile}
+      %x{rsync --recursive --times --rsh=ssh --compress --human-readable --progress public/assets #{user}@foxandxss.net:#{shared_path}}
+      %x{bundle exec rake assets:clean}
+    end
+  end
+
+  task :setup_config, roles: :app do
+    run "mkdir -p #{shared_path}/config/settings"
+    top.upload("config/settings.local.yml", "#{shared_path}/config/settings.local.yml")
+    top.upload("config/settings/production.local.yml", "#{shared_path}/config/settings/production.local.yml")
+    top.upload("config/thin.yml", "#{shared_path}/config/thin.yml")
+    top.upload("config/database.yml", "#{shared_path}/config/database.yml")
+    top.upload(".rvmrc", "#{shared_path}/.rvmrc")
+    puts "Edit your configs at #{shared_path}"
+  end
+
+  after "deploy:setup", "deploy:setup_config"
+
+  task :symlink_config, roles: :app do
+    run "ln -nfs #{shared_path}/config/settings.local.yml #{release_path}/config/settings.local.yml"
+    run "ln -nfs #{shared_path}/config/settings/production.local.yml #{release_path}/config/settings/production.local.yml"
+    run "ln -nfs #{shared_path}/config/thin.yml #{release_path}/config/thin.yml"
+    run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+    run "ln -nfs #{shared_path}/.rvmrc #{release_path}/.rvmrc"
+  end
+
+  after "deploy:finalize_update", "deploy:symlink_config"
+
+  desc "Make sure local git is in sync with remote."
+  task :check_revision, roles: :web do
+    unless `git rev-parse HEAD` == `git rev-parse origin/master`
+      puts "WARNING: HEAD is not the same as origin/master"
+      puts "Run `git push` to sync changes."
+      exit
+    end
+  end
+  before "deploy", "deploy:check_revision"
+end

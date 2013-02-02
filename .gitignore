@@ -15,7 +15,10 @@
 /tmp
 /.idea
 /.rvmrc
+.powrc
+.DS_Store
 
+/public/assets/
 /public/system/
 
 config/settings.local.yml
